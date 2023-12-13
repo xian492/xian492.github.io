@@ -1,0 +1,466 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="xian"><meta name="copyright" content="xian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="&amp;nbsp  &amp;nbsp   实验报告               题目：贪心算法 算法实现题              班  级：2021211311          学 号：2021211335       姓 名：&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp张心妍&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp  学 院：计算机学院              2023年12月">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;nbsp  &amp;nbsp   实验报告               题目：贪心算法 算法实现题              班  级：2021211311          学 号：2021211335       姓 名：&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp张心妍&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp  学 院：计算机学院              2023年12月">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-12-06T13:31:20.393Z">
+<meta property="article:modified_time" content="2023-12-07T14:29:48.595Z">
+<meta property="article:author" content="xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-07 22:29:48'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-12-06T13:31:20.393Z" title="Created 2023-12-06 21:31:20">2023-12-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-12-07T14:29:48.595Z" title="Updated 2023-12-07 22:29:48">2023-12-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><center>&nbsp</center>
+
+<center>&nbsp</center>
+<center><img src="https://raw.githubusercontent.com/banned2054/Picture_online/main/2022/05/23/20220523-194439.jpg"/></center>
+
+<center><font size="40"><b>实验报告</b></font></center>
+
+
+
+
+
+
+<center><img src="https://raw.githubusercontent.com/banned2054/Picture_online/main/2022/05/23/20220523-195613.png"/></center>
+
+ 
+
+ 
+
+<center><font size="5">题目：<u>贪心算法 算法实现题</u></font></center>          
+
+
+
+<center><font size="4">班  级：<u>2021211311</u></font></center>        
+
+<center><font size="4">学 号：<u>2021211335</u></font></center>     
+
+<center><font size="4">姓 名：<u>&nbsp&nbsp&nbsp&nbsp张心妍&nbsp&nbsp&nbsp&nbsp</u></font></center>
+
+<center><font size="4">学 院：<u>计算机学院</u></font></center>     
+
+ 
+
+
+
+
+
+<center><font size="4"><b>2023年12月</b></font></center>
+
+
+
+
+
+
+
+
+
+<div></div class="body">
+
+
+
+<h1 id="4-4-磁盘文件最优存储"><a href="#4-4-磁盘文件最优存储" class="headerlink" title="4-4 磁盘文件最优存储"></a>4-4 磁盘文件最优存储</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206214005058.png" alt="image-20231206214005058"></p>
+<h2 id="算法实现-解题思路"><a href="#算法实现-解题思路" class="headerlink" title="算法实现&#x2F;解题思路"></a>算法实现&#x2F;解题思路</h2><ul>
+<li><strong>排序文件概率</strong>：<ul>
+<li>使用 <code>sort</code> 函数对文件的检索概率数组 <code>p</code> 进行排序，以确保概率从小到大排列。</li>
+</ul>
+</li>
+<li><strong>确定文件分布</strong>：<ul>
+<li>设定一个数组 <code>x</code> 用于表示文件在磁盘中的分布情况。</li>
+<li>将概率最大的文件 <code>p[n-1]</code> 放置在中心位置 <code>x[k]</code>，其中 <code>k = (n-1)/2</code> 作为中心索引。</li>
+<li>接下来，按照指定规则将其他文件放置在磁盘上，满足 <code>f(n-1)</code> 占中心磁道，<code>f(n-2)</code> 和 <code>f(n-3)</code> 分居 <code>f(n-1)</code> 两侧，<code>f(n-4)</code> 和 <code>f(n-5)</code> 分居最外两侧。</li>
+</ul>
+</li>
+<li><strong>计算最小期望检索时间</strong>：<ul>
+<li>对于每个文件位置 <code>i</code>，计算与其他文件位置 <code>j</code> 之间的期望检索时间。</li>
+<li>通过计算 <code>x[i]*x[j]*(j-i)</code>，表示两个文件在磁盘上的距离乘以它们的概率乘积。</li>
+<li>累加所有文件对的期望检索时间，并累加它们的概率 <code>P = p[1]+p[2]+..+p[n]</code>。</li>
+</ul>
+</li>
+<li><strong>返回最小期望检索时间</strong>：<ul>
+<li>最后将总期望检索时间 <code>sum</code> 除以概率总和 <code>P</code> 的平方，即 <code>sum/P/P</code>，得到最终的最小期望检索时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 日期：2023-12-07</span></span><br><span class="line"><span class="comment"> * 题目：磁盘文件最优存储</span></span><br><span class="line"><span class="comment"> * 作者：张心妍</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">cipan</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">double</span>[] p; <span class="comment">// 用于存储输入值的数组</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">File</span> <span class="variable">inputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;input4.txt&quot;</span>); <span class="comment">// 包含输入数据的文件</span></span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(inputFile);</span><br><span class="line">            <span class="type">FileWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;output4.txt&quot;</span>); <span class="comment">// 写入输出的文件</span></span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> input.nextInt(); <span class="comment">// 读取元素个数</span></span><br><span class="line">            p = <span class="keyword">new</span> <span class="title class_">double</span>[n]; <span class="comment">// 初始化数组以存储元素</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 将元素读入数组</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                p[i] = input.nextDouble();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">double</span> <span class="variable">result</span> <span class="operator">=</span> greedy(n); <span class="comment">// 执行贪心算法</span></span><br><span class="line">            writer.write(String.format(<span class="string">&quot;%.6f&quot;</span>, result)); <span class="comment">// 将结果写入输出文件</span></span><br><span class="line"></span><br><span class="line">            input.close(); <span class="comment">// 关闭输入文件</span></span><br><span class="line">            writer.close(); <span class="comment">// 关闭输出文件</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace(); <span class="comment">// 处理IO异常</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 贪心算法计算结果</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">greedy</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        Arrays.sort(p); <span class="comment">// 对输入数组进行排序</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] x = <span class="keyword">new</span> <span class="title class_">int</span>[n]; <span class="comment">// 用于存储计算值的数组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> (n - <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">// 找到数组的中心位置</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算数组x的值</span></span><br><span class="line">        x[k] = (<span class="type">int</span>) p[n - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k + <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            x[i] = (<span class="type">int</span>) p[n - <span class="number">2</span> * (i - k)];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            x[i] = (<span class="type">int</span>) p[n - <span class="number">2</span> * (k - i) - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">P</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 存储元素和的变量</span></span><br><span class="line">        <span class="type">double</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 存储最终求和的变量</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用数组x中的计算值计算总和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            P += p[i]; <span class="comment">// 计算元素和</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                sum += x[i] * x[j] * (j - i); <span class="comment">// 根据算法计算总和</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum / P / P; <span class="comment">// 返回最终结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p><strong>时间复杂度分析：</strong></p>
+<ul>
+<li>读取输入和初始化数组 <code>p</code> 的时间复杂度是线性的：**O(n)**，其中 <code>n</code> 是文件的数量。</li>
+<li>使用 <code>Arrays.sort(p)</code> 对概率数组进行排序：排序算法的时间复杂度为 **O(n log n)**，这是最耗时的部分。</li>
+</ul>
+<p>​	接下来的循环操作的时间复杂度如下：</p>
+<ul>
+<li>初始化数组 <code>x</code> 的时间复杂度是线性的：**O(n)**。</li>
+<li>分配值给 <code>x[i]</code> 的三个循环的总时间复杂度为 **O(n)**。</li>
+<li>计算 <code>sum</code> 的嵌套循环涉及两层迭代：<ul>
+<li>外部循环运行 <code>n</code> 次。</li>
+<li>内部循环运行 <code>n - i</code> 次，其中 <code>i</code> 是外部循环的当前迭代次数。</li>
+</ul>
+</li>
+</ul>
+<p>因此，<code>greedy</code> 方法的总体时间复杂度可以估算为：**O(n log n)**（排序）+ **O(n)**（数组初始化）+ **O(n)**（值分配）+ **O(n^2)**（嵌套循环）</p>
+<p>这段代码的主要耗时部分是排序操作，因此整体的时间复杂度为 **O(n log n)**。</p>
+<h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><ol>
+<li><p><strong>基本输入：</strong></p>
+<ul>
+<li>输入：n &#x3D; 5，p &#x3D; [1, 2, 3, 4, 5]</li>
+<li>输出：0.613333</li>
+<li>用例分析：简单的顺序排列情况。</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206225728837.png" alt="image-20231206225728837"></li>
+</ul>
+</li>
+<li><p><strong>特殊情况：</strong></p>
+<ul>
+<li>输入：n &#x3D; 1，p &#x3D; [100]</li>
+<li>输出：0.000000</li>
+<li>用例分析：单个元素的情况。</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206225800762.png" alt="image-20231206225800762"></li>
+</ul>
+</li>
+<li><p><strong>重复元素：</strong></p>
+<ul>
+<li>输入：n &#x3D; 6，p &#x3D; [5, 5, 5, 6, 6, 6]</li>
+<li>输出：0.940312</li>
+<li>用例分析：包含重复元素的情况。</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206225914963.png" alt="image-20231206225914963"></li>
+</ul>
+</li>
+<li><p><strong>随机输入：</strong></p>
+<ul>
+<li><p>输入：n &#x3D; 5，p &#x3D; [33, 55, 22, 11, 9]</p>
+</li>
+<li><p>输出：0.547396</p>
+</li>
+<li><p>用例分析：随机生成的一组数据。</p>
+<p><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206225637170.png" alt="image-20231206225637170"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><ol>
+<li><strong>基本输入：</strong><ul>
+<li>输入是简单的顺序排列情况，文件概率按顺序增加。输出值为 <code>0.613333</code>，这是按照中心磁道与两侧文件位置关系计算得出的最小期望检索时间。因为文件顺序是增加的，检索的期望时间相对较小。</li>
+</ul>
+</li>
+<li><strong>特殊情况：</strong><ul>
+<li>对于只有一个文件的情况，输出为 <code>0.000000</code>。这个结果意味着贪心算法在这种情况下计算得到的最小期望检索时间为零。因为只有一个文件，不存在多个文件之间的排列顺序，所以检索时间为零是符合预期的。</li>
+</ul>
+</li>
+<li><strong>重复元素：</strong><ul>
+<li>输入包含重复元素的情况下，输出为 <code>0.940312</code>。这种情况下，贪心算法按照文件概率大小排序，然后根据一定规则安排文件在磁盘上的位置。尽管有重复元素，但算法仍会按照概率大小顺序进行排序，并计算出相对较小的期望检索时间。</li>
+</ul>
+</li>
+<li><strong>随机输入：</strong><ul>
+<li>对于随机生成的输入情况，输出为 <code>0.547396</code>。在这种情况下，贪心算法对随机概率的文件按照规则进行排序，并计算出相对较小的期望检索时间。这展示了算法可以在不同类型的输入情况下产生合理的输出结果。</li>
+</ul>
+</li>
+</ol>
+<h1 id="4-9-虚拟汽车加油"><a href="#4-9-虚拟汽车加油" class="headerlink" title="4-9 虚拟汽车加油"></a>4-9 虚拟汽车加油</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206221019696.png" alt="image-20231206221019696"></p>
+<h2 id="算法实现-解题思路-1"><a href="#算法实现-解题思路-1" class="headerlink" title="算法实现&#x2F;解题思路"></a>算法实现&#x2F;解题思路</h2><p><strong>处理逻辑：</strong></p>
+<ul>
+<li>对于每个测试用例，首先从输入中读取两个整数n和k，分别表示目的地距离和加油站数量。</li>
+<li>接下来按顺序读取k+1个整数，并将它们存储在数组a中，这些数字表示每个加油站距离起点的距离。</li>
+</ul>
+<p><strong>贪心算法处理逻辑：</strong></p>
+<ul>
+<li>使用贪心算法求解汽车加油问题。</li>
+<li>代码中的 greedy() 方法模拟了汽车行驶过程中的加油决策：<ul>
+<li>通过一系列循环遍历加油站距离数组a。</li>
+<li>使用gas表示当前的油还可以行驶多少距离。</li>
+<li>如果出现两个加油站之间的距离大于目的地距离n，则肯定到达不了目的地，将结果设为 -1。</li>
+<li>如果当前的油不够行驶到下一个加油站，就加油，并将加油次数sum加一。</li>
+</ul>
+</li>
+</ul>
+<p><strong>输出结果：</strong></p>
+<ul>
+<li>最后将计算得到的结果输出到 “output9.txt” 文件中，如果无解则输出 “No Solution”。</li>
+</ul>
+<h2 id="程序实现-1"><a href="#程序实现-1" class="headerlink" title="程序实现"></a>程序实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 日期：2023-12-07</span></span><br><span class="line"><span class="comment"> * 题目：虚拟汽车加油</span></span><br><span class="line"><span class="comment"> * 作者：张心妍</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">car</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">File</span> <span class="variable">inputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;input9.txt&quot;</span>); <span class="comment">// 包含输入数据的文件</span></span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(inputFile);</span><br><span class="line"></span><br><span class="line">            <span class="type">File</span> <span class="variable">outputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output9.txt&quot;</span>); <span class="comment">// 写入输出的文件</span></span><br><span class="line">            <span class="type">FileWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(outputFile);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (input.hasNext()) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> input.nextInt(); <span class="comment">// 目的地距离</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> input.nextInt(); <span class="comment">// 加油站数量</span></span><br><span class="line"></span><br><span class="line">                <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[k + <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">                    a[i] = input.nextInt();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> greedy(n, k, a);</span><br><span class="line">                <span class="keyword">if</span> (result == -<span class="number">1</span>) &#123;</span><br><span class="line">                    writer.write(<span class="string">&quot;No Solution\n&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    writer.write(result + <span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            input.close(); <span class="comment">// 关闭输入文件</span></span><br><span class="line">            writer.close(); <span class="comment">// 关闭输出文件</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace(); <span class="comment">// 处理IO异常</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 贪心算法求解</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">greedy</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> k, <span class="type">int</span>[] a)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">f</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>, gas = n; <span class="comment">// gas表示当前的油还可以走多少km</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &lt; a[i]) &#123; <span class="comment">// 出现两个加油站之间距离大于n则肯定到达不了目的地</span></span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (gas &lt; a[i]) &#123; <span class="comment">// 当前的油不够行驶</span></span><br><span class="line">                sum++;</span><br><span class="line">                gas = n;</span><br><span class="line">            &#125;</span><br><span class="line">            gas -= a[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> f ? -<span class="number">1</span> : sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p><strong>时间复杂度分析：</strong></p>
+<ol>
+<li><strong>文件读取操作：</strong><ul>
+<li>文件读取的时间复杂度是 O(n)，其中 n 是输入文件中测试用例的数量。</li>
+</ul>
+</li>
+<li><strong>循环遍历操作：</strong><ul>
+<li>对于每个测试用例，首先会从输入中读取两个整数 n 和 k，然后读取 k+1 个整数，因此循环遍历的时间复杂度是 O(k)。</li>
+</ul>
+</li>
+<li><strong>贪心算法处理逻辑：</strong><ul>
+<li>贪心算法的时间复杂度主要集中在循环遍历加油站距离数组 a 的操作上。</li>
+<li>算法会遍历 k+1 个加油站距离，对于每个加油站进行一些判断和计算，因此这部分的时间复杂度也是 O(k)。</li>
+</ul>
+</li>
+</ol>
+<p>整体来看，这个greedy算法的时间复杂度主要由文件读取和循环遍历操作决定。文件读取部分的复杂度是线性的，而贪心算法部分的复杂度与加油站数量 k 相关，因此这个算法的时间复杂度可以近似表示为 O(n * k)。</p>
+<p>如果考虑到 k 的数量级不太大，可以将这个算法的时间复杂度视作近似为 O(n)。</p>
+<h2 id="输出结果-1"><a href="#输出结果-1" class="headerlink" title="输出结果"></a>输出结果</h2><p><strong>基本情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">70 3</span><br><span class="line">30 40 50 60</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加满油后可行驶距离为 70 公里，途中有 3 个加油站，距离分别是 30、40、50 和 60 公里。</li>
+<li>输出：2</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207214106336.png" alt="image-20231207214106336"></li>
+</ul>
+<p><strong>边界情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">100 1</span><br><span class="line">100 110</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>只有一个加油站，加满油后可行驶距离为 100 公里，加油站与目的地的距离为 110 公里。</li>
+<li>输出：No Solution</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207214144393.png" alt="image-20231207214144393"></li>
+</ul>
+<p><strong>特殊情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">30 6</span><br><span class="line">30 10 10 10 0 20 10</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加满油后可行驶距离为 30 公里，有 6 个加油站。其中第4个加油站的距离为 0 公里。</li>
+<li>输出：2</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207214032468.png" alt="image-20231207214032468"></li>
+</ul>
+<p><strong>随机情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7 7</span><br><span class="line">1 2 3 4 5 1 6 6</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出：4</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207213414685.png" alt="image-20231207213414685"></li>
+</ul>
+<h2 id="结果分析-1"><a href="#结果分析-1" class="headerlink" title="结果分析"></a>结果分析</h2><ol>
+<li><strong>基本情况：</strong><ul>
+<li>加满油后可行驶距离为 70 公里，途中有 3 个加油站，距离分别是 30、40、50 和 60 公里。</li>
+<li>输出结果为 <code>2</code>。这表示汽车需要在第一个和第二个加油站之间加油一次，然后在第三个加油站处加油一次才能到达目的地。</li>
+</ul>
+</li>
+<li><strong>边界情况：</strong><ul>
+<li>只有一个加油站，加满油后可行驶距离为 100 公里，加油站与目的地的距离为 110 公里。</li>
+<li>输出结果为 <code>No Solution</code>。这意味着汽车无法到达目的地，因为唯一的加油站距离目的地太远，车辆无法到达。</li>
+</ul>
+</li>
+<li><strong>特殊情况：</strong><ul>
+<li>加满油后可行驶距离为 30 公里，有 6 个加油站。其中第4个加油站的距离为 0 公里。</li>
+<li>输出结果为 <code>2</code>。这表明汽车需要在第一个和第二个加油站之间加油一次，然后在第五个加油站处加油一次才能到达目的地。第四个加油站的存在不影响结果，因为它位于目的地之前。</li>
+</ul>
+</li>
+<li><strong>随机情况：</strong><ul>
+<li>加满油后可行驶距离为 7 公里，有 7 个加油站，它们之间的距离分别是 1、2、3、4、5、1 和 6 公里。</li>
+<li>输出结果为 <code>4</code>。这表示汽车需要在第一个、第二个、第四个和第六个加油站之间各加一次油才能到达目的地。</li>
+</ul>
+</li>
+</ol>
+<p>这些输出结果显示了在不同情况下算法的执行情况，对于不同的输入，算法给出了符合预期的输出，包括能够到达目的地的最少加油次数和无法到达目的地的情况。</p>
+<h1 id="4-11-删数问题"><a href="#4-11-删数问题" class="headerlink" title="4-11 删数问题"></a>4-11 删数问题</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231206221055809.png" alt="image-20231206221055809"></p>
+<h2 id="算法实现-解题思路-2"><a href="#算法实现-解题思路-2" class="headerlink" title="算法实现&#x2F;解题思路"></a>算法实现&#x2F;解题思路</h2><p><strong>贪心算法处理逻辑：</strong></p>
+<ul>
+<li><code>greedy()</code> 方法实现了贪心算法来找出剩下数字组成的最小数。</li>
+<li>如果 k 大于等于 a 的长度，直接返回空字符串，因为数字被删完了。</li>
+<li>否则，通过循环进行 k 次删除操作：<ul>
+<li>在每次循环中，找到第一个数字比后一个数字大的位置 i。</li>
+<li>删除数字 a[i]，并将字符串 a 重新赋值为删除后的结果。</li>
+</ul>
+</li>
+<li>最后，检查剩下数字中是否有前导的数字0，如果有，去除前导0，然后返回结果。</li>
+</ul>
+<h2 id="程序实现-2"><a href="#程序实现-2" class="headerlink" title="程序实现"></a>程序实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 日期：2023-12-07</span></span><br><span class="line"><span class="comment"> * 题目：删数问题</span></span><br><span class="line"><span class="comment"> * 作者：张心妍</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">delete</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">File</span> <span class="variable">inputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;input11.txt&quot;</span>); <span class="comment">// 包含输入数据的文件</span></span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(inputFile);</span><br><span class="line"></span><br><span class="line">            <span class="type">File</span> <span class="variable">outputFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output11.txt&quot;</span>); <span class="comment">// 写入输出的文件</span></span><br><span class="line">            <span class="type">FileWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(outputFile);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> input.next(); <span class="comment">// 读取n位正整数a</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> input.nextInt(); <span class="comment">// 读取要删除的数字数量k</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (a.length() == k) writer.write(<span class="string">&quot;0&quot;</span>); <span class="comment">// 防止整数a全被删除</span></span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> greedy(a, k);</span><br><span class="line">                writer.write(result);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            input.close(); <span class="comment">// 关闭输入文件</span></span><br><span class="line">            writer.close(); <span class="comment">// 关闭输出文件</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace(); <span class="comment">// 处理IO异常</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 贪心算法求解</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">greedy</span><span class="params">(String a, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (k &gt;= a.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="type">int</span> i;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 找到第一个位置，它的下一位数字更大</span></span><br><span class="line">                <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; a.length() - <span class="number">1</span> &amp;&amp; a.charAt(i) &lt;= a.charAt(i + <span class="number">1</span>); ++i);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 删除这个位置的数字</span></span><br><span class="line">                <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(a);</span><br><span class="line">                sb.deleteCharAt(i);</span><br><span class="line">                a = sb.toString();</span><br><span class="line"></span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 找到最终结果中开头不为零的位置</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">leadingZeros</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (leadingZeros &lt; a.length() - <span class="number">1</span> &amp;&amp; a.charAt(leadingZeros) == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">                leadingZeros++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> a.substring(leadingZeros);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p><strong>时间复杂度分析：</strong></p>
+<ol>
+<li><strong>文件读取操作：</strong><ul>
+<li>文件读取的时间复杂度是 O(1)，因为它只进行了一次文件读取。</li>
+</ul>
+</li>
+<li><strong>贪心算法处理逻辑：</strong><ul>
+<li>首先检查 k 是否大于等于 a 的长度，如果是，则直接返回空字符串，时间复杂度为 O(1)。</li>
+<li>否则进入循环，最多进行 k 次迭代。在每次迭代中：<ul>
+<li>找到第一个数字比后一个数字大的位置 i，这一步最坏情况下需要遍历整个数字串，时间复杂度为 O(n)，其中 n 是数字串 a 的长度。</li>
+<li>删除字符并重新构建字符串，这一步操作的时间复杂度为 O(n)，其中 n 是数字串 a 的长度。</li>
+</ul>
+</li>
+<li>前导0的去除时间复杂度为 O(n)，最坏情况下需要遍历整个数字串。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，贪心算法的时间复杂度主要集中在数字串的遍历和删除操作上，因此整体时间复杂度可近似表示为 O(k * n)，其中 k 是要删除的数字数量，n 是数字串 a 的长度。</p>
+<h2 id="输出结果-2"><a href="#输出结果-2" class="headerlink" title="输出结果"></a>输出结果</h2><p><strong>基本情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">174583</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里，数字是 <code>174583</code>，需要删除 4 个数字。</li>
+<li>输出：13</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207214908546.png" alt="image-20231207214908546"></li>
+</ul>
+<p><strong>边界情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10200</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这个测试用例中，数字是 <code>10200</code>，需要删除 1 个数字。</li>
+<li>输出：200</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207214924516.png" alt="image-20231207214924516"></li>
+</ul>
+<p><strong>特殊情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">12345</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这个测试用例中，数字是 <code>12345</code>，需要删除 5 个数字。删除的数字数量与整个数字的长度相同，防止整数被完全删除，直接输出 <code>0</code>。</li>
+<li>输出：0</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207221624407.png" alt="image-20231207221624407"></li>
+</ul>
+<p><strong>随机情况：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">43210987654321</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里，数字是一个较长的整数 <code>43210987654321</code>，需要删除 5 个数字。</li>
+<li>输出：87654321</li>
+<li><img src="C:\Users\18513\AppData\Roaming\Typora\typora-user-images\image-20231207215012673.png" alt="image-20231207215012673"></li>
+</ul>
+<h2 id="结果分析-2"><a href="#结果分析-2" class="headerlink" title="结果分析"></a>结果分析</h2><p>这些例子显示了在各种情况下算法的表现。它在大多数情况下产生了符合预期的最小可能值。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">xian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">http://example.com/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/13/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/04/%E5%A4%A7%E5%88%9B%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%9C%9F/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4-%E7%A3%81%E7%9B%98%E6%96%87%E4%BB%B6%E6%9C%80%E4%BC%98%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text">4-4 磁盘文件最优存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">算法实现&#x2F;解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">程序实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">1.5.</span> <span class="toc-text">输出结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text">结果分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-9-%E8%99%9A%E6%8B%9F%E6%B1%BD%E8%BD%A6%E5%8A%A0%E6%B2%B9"><span class="toc-number">2.</span> <span class="toc-text">4-9 虚拟汽车加油</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.2.</span> <span class="toc-text">算法实现&#x2F;解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">2.3.</span> <span class="toc-text">程序实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="toc-number">2.4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C-1"><span class="toc-number">2.5.</span> <span class="toc-text">输出结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90-1"><span class="toc-number">2.6.</span> <span class="toc-text">结果分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-11-%E5%88%A0%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">4-11 删数问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-number">3.2.</span> <span class="toc-text">算法实现&#x2F;解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">3.3.</span> <span class="toc-text">程序实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">3.4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C-2"><span class="toc-number">3.5.</span> <span class="toc-text">输出结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90-2"><span class="toc-number">3.6.</span> <span class="toc-text">结果分析</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/13/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-13T03:24:25.721Z" title="Created 2023-12-13 11:24:25">2023-12-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" title="Untitled">Untitled</a><time datetime="2023-12-06T13:31:20.393Z" title="Created 2023-12-06 21:31:20">2023-12-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/04/%E5%A4%A7%E5%88%9B%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%9C%9F/" title="Untitled">Untitled</a><time datetime="2023-12-04T13:56:35.188Z" title="Created 2023-12-04 21:56:35">2023-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/04/%E8%AE%A1%E7%BD%91exp5/" title="Untitled">Untitled</a><time datetime="2023-12-04T01:16:55.470Z" title="Created 2023-12-04 09:16:55">2023-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/27/ns5-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/" title="Untitled">Untitled</a><time datetime="2023-11-27T03:58:21.225Z" title="Created 2023-11-27 11:58:21">2023-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By xian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

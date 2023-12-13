@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="xian"><meta name="copyright" content="xian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="班级：2021211311 学号：2021211335 姓名：张心妍  《网络存储技术》平时作业#4 DHT&#x2F;分布式列表概述概念​	分布式散列表，也称为分布式哈希表，英文为Distributed Hash Table（DHT），是分布式计算系统中的一类，用于将键的集合分散到分布式系统中的各个节点。这些节点类似于哈希表中的存储位置。通常用于大规模节点的系统，并且系统的节点会频繁加入或离开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/11/15/ns4-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="班级：2021211311 学号：2021211335 姓名：张心妍  《网络存储技术》平时作业#4 DHT&#x2F;分布式列表概述概念​	分布式散列表，也称为分布式哈希表，英文为Distributed Hash Table（DHT），是分布式计算系统中的一类，用于将键的集合分散到分布式系统中的各个节点。这些节点类似于哈希表中的存储位置。通常用于大规模节点的系统，并且系统的节点会频繁加入或离开">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-11-15T02:21:15.712Z">
+<meta property="article:modified_time" content="2023-11-15T03:16:04.112Z">
+<meta property="article:author" content="xian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/11/15/ns4-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-15 11:16:04'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-11-15T02:21:15.712Z" title="Created 2023-11-15 10:21:15">2023-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-11-15T03:16:04.112Z" title="Updated 2023-11-15 11:16:04">2023-11-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>班级：2021211311</p>
+<p>学号：2021211335</p>
+<p>姓名：张心妍 </p>
+<h1 id="《网络存储技术》平时作业-4"><a href="#《网络存储技术》平时作业-4" class="headerlink" title="《网络存储技术》平时作业#4"></a>《网络存储技术》平时作业#4</h1></blockquote>
+<h2 id="DHT-分布式列表概述"><a href="#DHT-分布式列表概述" class="headerlink" title="DHT&#x2F;分布式列表概述"></a><strong>DHT&#x2F;分布式列表概述</strong></h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h3><p>​	分布式散列表，也称为分布式哈希表，英文为Distributed Hash Table（DHT），是分布式计算系统中的一类，用于将键的集合分散到分布式系统中的各个节点。这些节点类似于哈希表中的存储位置。通常用于大规模节点的系统，并且系统的节点会频繁加入或离开。</p>
+<p>​	在概念上，分布式散列表类似于传统的散列表，不同之处在于传统散列表主要用于单机系统。而分布式散列表则针对分布式系统，将大量甚至海量数据进行存储。在实际应用中，对存储的每个业务数据进行散列计算，将计算出的散列值作为键，业务数据本身作为值进行存储。</p>
+<h3 id="研发目的"><a href="#研发目的" class="headerlink" title="研发目的"></a><strong>研发目的</strong></h3><p>​	研究分布式哈希表的主要动机是为了开发点对点系统，像是Napster、Gnutella、BitTorrent及Freenet。这些系统使用分散在互联网上的各项资源以提供文件分享服务，特别在带宽及硬盘存储空间上受益良多。</p>
+<p>​	这些系统采用不同的方法解决定位拥有某数据节点的问题。Napster使用中央索引服务器，每个节点加入网络时会将拥有的文件列表发送给服务器，服务器进行搜索并返回结果给查询节点。但中央索引服务器使整个系统易受攻击且可能引发法律问题。相反，Gnutella和类似网络采用大量查询模式，每次搜索会向网络所有节点广播查询消息。虽然避免了单点故障，但效率不如Napster高。</p>
+<p>​	最后，Freenet采用完全分布式系统，建立一套基于键的路由方法。每个文件与一个键相关联，相似键的文件倾向由相似节点集合保管。查询消息根据提供的键路由到相应集合，无需经过所有节点。然而，Freenet不能保证在网络上查询到数据。</p>
+<p>​	为了达到Gnutella和Freenet的分散性以及Napster的效率与正确结果，分布式哈希表采用更为结构化的基于键的路由方法。但与Freenet相似，分布式哈希表仅支持精确搜索，无法提供部分关键字搜索，这一功能可以在分布式哈希表的上层实现。</p>
+<p>​	最初的四项分布式哈希表技术——内容可定址网络（Content addressable network，CAN）、Chord、Pastry以及Tapestry——皆于2001年发表。此后，相关研究一直十分活跃。除了学术领域，分布式哈希表技术已应用在诸如BitTorrent及CoralCDN（Coral Content Distribution Network）等场景中。</p>
+<h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a><strong>主要特性</strong></h3><ul>
+<li><strong>分散性</strong>：系统节点没有中心化协调机制。</li>
+<li><strong>伸缩性</strong>：即使有成千上万个节点，系统仍然应高效运作。</li>
+<li><strong>容错性</strong>：即使节点频繁加入、离开或停止工作，系统仍需保持一定可靠度。</li>
+</ul>
+<p>​	要达到以上的目标，有一个关键的技术：任一个节点只需要与系统中的部分节点沟通，当成员改变的时候，只有一部分的工作（例如数据或键的发送，哈希表的改变等）必须要完成。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a><strong>结构</strong></h3><p>​	分布式散列表的结构可以分成几个主要的组件。其基础是一个抽象的<strong>键空间</strong>（keyspace），例如说所有160位长的字符串集合。键空间分区（keyspace partitioning）将键空间分区成数个，并指定到在此系统的节点中。而延展网络则连接这些节点，并让他们能够借由在键空间内的任一值找到拥有该值的节点。</p>
+<p>​	假设键空间是一个160位长的字符串集合。为了在分布式散列表中存储一个文件，名称为filename且内容为data，我们计算出filename的SHA1散列值——一个160位的键k——并将消息put(k,data)送给分布式散列表中的任意参与节点。此消息在延展网络中被路由，直到抵达在键空间分区中被指定负责存储关键值k的节点。而(k,data)即存储在该节点。其他的节点只需要重新计算filename的散列值k，然后提交消息get(k)给分布式哈希表中的任意参与节点，以此来找与k相关的数据。此消息也会在延展网络中被路由到负责存储k的节点。而此节点则会负责传回存储的数据data。</p>
+<p>​	基本上，就是一种映射key和节点的算法以及路由的算法。</p>
+<ul>
+<li>其一为保证任何的路由路径长度必须尽量短，因而请求能快速地被完成；</li>
+<li>其二为任一节点的邻近节点数目（又称最大节点度（Degree (graph theory)））必须尽量少，因此维护的花费不会过多。</li>
+</ul>
+<h3 id="DHT难点"><a href="#DHT难点" class="headerlink" title="DHT难点"></a><strong>DHT难点</strong></h3><ol>
+<li><p><strong>无中心导致的难点</strong></p>
+<p>  DHT的诞生，是为了解决之前P2P技术的缺陷。其中一个缺陷是中央服务器导致的单点故障。</p>
+<p>  因此 DHT 就不能再依靠中央服务器。而没有了中央服务器，就需要提供一系列机制来实现节点之间的通讯。</p>
+</li>
+<li><p><strong>海量数据导致的难点</strong></p>
+<p>   DHT的很多使用场景是为了承载海量数据（PB 或更高级别）。</p>
+<p>   由于数据是海量的，每个节点只能存储（整个系统的）一小部分数据。需要把数据均匀分摊到每个节点。</p>
+</li>
+<li><p><strong>节点动态变化导致的难点</strong></p>
+<p>很多DHT的使用场景是在公网（互联网）上，参与DHT的节点（主机）会出现频繁变化，每时每刻都有新的节点上线，也会有旧的节点下线。在这种情况下，需要确保数据依然是均匀分摊到所有节点。</p>
+<p>因为传统散列表在针对 key 计算出散列值之后，需要用散列值和桶数进行某种运算（比如：取模运算），从而得到桶的编号。</p>
+<p>如果桶的数量出现变化，就会影响到上述取模运算的结果，然后导致数据错乱。</p>
+</li>
+<li><p><strong>高效查询导致的难点</strong></p>
+<p>  对于节点数很多的分布式系统，如何快速定位节点，同时又不消耗太多网络资源，这也是一个挑战。</p>
+<p>  DHT 必须有更高效的查找机制。而且这种查找机制要能适应节点动态变化这个特点。</p>
+</li>
+</ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h3><p>​	DHT 采用如下一些机制来解决上述问题，并满足分布式系统比较苛刻的需求。</p>
+<ol>
+<li><p><strong>散列算法的选择</strong><br>  前面提到： DHT 通常是直接拿业务数据的散列值作为 key，业务数据本身作为 value。</p>
+<p>  考虑到 DHT 需要承载的数据量通常比较大，散列函数产生的散列值范围（keyspace）要足够大，以防止太多的碰撞。更进一步，如果 keyspace大到一定程度，使得随机碰撞的概率小到忽略不计，就有助于简化 DHT 的系统设计。</p>
+<p>  通常的 DHT 都会采用大于等于128比特的散列值。</p>
+</li>
+<li><p><strong>同构的node ID与data key</strong><br>DHT属于分布式系统的一种。既然是分布式系统，意味着存在多个节点。在设计分布式系统的时候，一种常见的做法是：给每一个节点（node）分配唯一的ID。</p>
+<p>很多 DHT 的设计会让node ID采用跟data key同构的散列值。这么搞的好处是：</p>
+<ol>
+<li>当散列值空间足够大的时候，随机碰撞忽略不计，因此也就确保了node ID 的唯一性</li>
+<li>可以简化系统设计——比如简化路由算法（下面会提及）</li>
+</ol>
+</li>
+<li><p><strong>拓扑结构的设计</strong><br>作为分布式系统， DHT 必然要定义某种拓扑结构；有了拓扑结构，自然就要设计某种路由算法。</p>
+<p>如果某个DHT 采用前面所说的node ID与data key同构，那么很自然的就会引入Key-based routing。</p>
+<p>当某个分布式系统具有自己的拓扑结构，它本身成为一个Overlay网络（Overlay Network）。所谓的Overlay网络，通俗地说就是网络之上的网络。对于大部分 DHT 而言，它们是基于互联网之上的覆盖网络，它们的数据通讯是依赖下层的互联网来实现的。</p>
+<p>前面提到的node ID，其解耦的作用就体现在分布式系统在设计拓扑结构和路由算法时，只需要考虑 node ID，而不用考虑其下层网络的属性（比如：协议类型、 IP 地址、端⼝口号）。</p>
+</li>
+<li><p><strong>路由算法的权衡</strong></p>
+<p>  由于DHT中的节点数可能非常多（比如：几十万、几百万），而且这些节点是动态变化的。因此就不可能让每一个节点都记录所有其它节点的信息。实际情况是：每个节点通常只知道少数一些节点的信息。</p>
+<p>  这时候就需要设计某种路由算法，尽可能利用已知的节点来转发数据。 路由算法很重要，直接决定了DHT 的速度和资源消耗。</p>
+<p>  在确定了路由算法之后，还需要做一个两难的权衡路由表的大小。</p>
+<p>  路由表越大，可以实现越短（跳数越少）的路由；缺点是（由于节点动态变化）路由表的维护成本也就越高。</p>
+<p>  路由表数越小，其维护成本越小；缺点是路由就会变长（跳数变多）。</p>
+</li>
+<li><p><strong>距离算法</strong><br>  某些 DHT 系统还会定义一种距离算法，用来计算： 节点之间的距离、 数据之间的距离、 节点与数据的距离。<br>   　　请注意：此处所说的距离属于逻辑层面，对应的是 DHT 自己的拓扑结构；它与地理位置无关，也与互联网的拓扑结构无关。</p>
+<p>  这里就能明白为什么前面要强调node ID与data key同构。当这两者同构，就可以用同一种距离算法；反之，如果这两者不同构，多半要引入几种不同的距离算法。</p>
+</li>
+<li><p><strong>数据定位</strong><br>  对 DHT 而言，这是最关键的。DHT 与传统的散列表在功能上是类似的。说白了，他们最关键的功能只有两个保存数据和获取数据。</p>
+</li>
+</ol>
+<h3 id="数据的保存和获取"><a href="#数据的保存和获取" class="headerlink" title="数据的保存和获取"></a><strong>数据的保存和获取</strong></h3><h4 id="保存数据"><a href="#保存数据" class="headerlink" title="保存数据"></a><strong>保存数据</strong></h4><p>​	当某个节点得到了新加入的数据（K&#x2F;V），它会先计算自己与新数据的 key 之间的距离；然后再计算它所知道的其它节点与这个key 的距离。</p>
+<p>​	如果计算下来，自己与 key 的距离最小，那么这个数据就保持在自己这里。否则的话，把这个数据转发给距离最小的节点。收到数据的另一个节点，也采用上述过程进行处理（递归处理）。</p>
+<h4 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a><strong>获取数据</strong></h4><p>​	当某个节点接收到查询数据的请求（key），它会先计算自己与 key 之间的距离；然后再计算它所知道的其它节点与这个 key 的距离。<br>​	如果计算下来，自己与 key 的距离最小，那么就在自己这里找有没有 key 对应的 value。有的话就返回 value，没有的话就报错。否则的话，把这个数据转发给距离最小的节点。收到数据的另一个节点，也采用上述过程进行处理（递归处理）。</p>
+<h2 id="Chord协议"><a href="#Chord协议" class="headerlink" title="Chord协议"></a><strong>Chord协议</strong></h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>​	Chord是一种分布式哈希表协议，旨在构建一个分布式系统，使得在大规模网络中快速定位节点。其主要思想是将节点和键映射到一个指定范围内的圆环上。</p>
+<ul>
+<li><strong>节点标识和键分配</strong>：每个节点和每个键都映射到一个范围内的标识空间，通常是一个固定大小的哈希空间。节点通过在环上占据一段空间来担任负责存储的区域。</li>
+<li><strong>路由</strong>：Chord使用分布式的指针结构来建立快速路由。每个节点维护一个指针表，其中存储了其他节点的引用。当要查找一个键所在的节点时，节点可以通过这个指针表进行快速路由。</li>
+<li><strong>数据存储</strong>：数据被分配到最接近其哈希值的节点上进行存储。Chord使用一种简单的分布式哈希函数来确定数据在环上的位置，然后将其存储到指定节点。</li>
+</ul>
+<p>Chord协议具有对数级别的路由复杂度，允许在大规模网络中高效地定位数据。</p>
+<h3 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a><strong>关键特性</strong></h3><h4 id="路由机制："><a href="#路由机制：" class="headerlink" title="路由机制："></a><strong>路由机制：</strong></h4><p>​	Chord利用一种分布式指针结构来实现高效路由。在Chord环上，每个节点都持有一个标识符（ID），节点和键通过哈希函数映射到环上的位置。路由在Chord环上进行，节点可以快速找到存储特定数据的节点。</p>
+<ol>
+<li><strong>指针结构</strong>：<ul>
+<li>每个节点维护一个指针表，包含其他节点的引用，这些引用分布在环上，跨度尽可能大。</li>
+<li>每个节点指向下一个节点的位置，通过这种指针结构实现路由。</li>
+</ul>
+</li>
+<li><strong>快速查找</strong>：<ul>
+<li>节点之间的迭代查找采用二分查找方法，每一步路由都能将查找空间缩小一半，以对数级别的路由复杂度快速定位目标节点。</li>
+</ul>
+</li>
+</ol>
+<h4 id="数据存储策略："><a href="#数据存储策略：" class="headerlink" title="数据存储策略："></a>数据存储策略：</h4><p>​	Chord基于哈希值将数据存储在最接近的节点上，保证了高效的数据检索与存储。</p>
+<ol>
+<li><strong>数据哈希值</strong>：<ul>
+<li>数据键（key）经过哈希函数处理得到哈希值，在Chord环上映射到一个特定位置。</li>
+<li>数据被存储在哈希值所对应位置的节点上。</li>
+</ul>
+</li>
+<li><strong>最近节点存储</strong>：<ul>
+<li>数据存储在距离哈希值最近的节点上，确保快速访问。</li>
+<li>当节点需要存储数据时，根据数据的哈希值找到其应该存储的位置，然后将数据存储在负责该位置的节点上。</li>
+</ul>
+</li>
+<li><strong>数据复制与冗余</strong>：<ul>
+<li>Chord可以通过复制数据到多个接近的节点实现冗余和容错，确保即使某个节点失效，数据仍可访问。</li>
+</ul>
+</li>
+</ol>
+<h4 id="快速的数据检索和存储："><a href="#快速的数据检索和存储：" class="headerlink" title="快速的数据检索和存储："></a>快速的数据检索和存储：</h4><p>​	Chord协议通过上述路由机制和数据存储策略实现了快速的数据检索与存储。</p>
+<ol>
+<li>高效路由：<ul>
+<li>基于指针结构和对数级别的路由复杂度，Chord能够快速定位节点，减少路由延迟。</li>
+</ul>
+</li>
+<li>快速数据存储：<ul>
+<li>数据根据哈希值存储在最近的节点上，提供快速的数据访问和存储操作。</li>
+</ul>
+</li>
+</ol>
+<p>​	Chord协议通过这些特性实现了高效的数据检索和存储，使得在分布式环境中能够快速、可靠地定位和操作数据。</p>
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><h4 id="节点的加入"><a href="#节点的加入" class="headerlink" title="节点的加入"></a>节点的加入</h4><ol>
+<li>任何一个新来的节点（假设叫 A），需要先跟 DHT 中已有的任一节点（假设叫 B）建立连接。</li>
+<li>A 随机生成一个散列值作为自己的 ID（对于足够大的散列值空间， ID 相同的概率忽略不计）</li>
+<li>A 通过跟 B 进行查询，找到自己这个 ID 在环上的接头人。也就是——找到自己这个 ID 对应的“继任”（假设叫 C）与“前任”（假设叫 D）</li>
+<li>接下来， A 需要跟 C 和 D 进行一系列互动，使得自己成为 C 的前任，以及 D 的继任。</li>
+</ol>
+<p>这个互动过程，大致类似于在双向链表当中插入元素。</p>
+<h4 id="节点的正常退出"><a href="#节点的正常退出" class="headerlink" title="节点的正常退出"></a>节点的正常退出</h4><p>​	如果某个节点想要主动离开这个 DHT 网络，按照约定需要作一些善后的处理工作。比如说，通知自己的前任去更新其继任者……<br>​	这些善后处理，大致类似于在双向链表中删除元素。</p>
+<h4 id="节点的异常退出"><a href="#节点的异常退出" class="headerlink" title="节点的异常退出"></a>节点的异常退出</h4><p>​	作为一个分布式系统，任何节点都有可能意外下线（也就是说，来不及进行善后就挂掉了）</p>
+<p>​	假设 节点A 的继任者异常下线了，那么 节点A 就抓瞎了。</p>
+<p>​	为了保险起见， Chord 引入了一个继任者候选列表”的概念。每个节点都用这个列表来包含：距离自己最近的 N 个节点的信息，顺序是由近到远。一旦自己的继任者下线了，就在列表中找到一个距离最近且在线的节点，作为新的继任者。然后 节点A 更新该列表，确保依然有 N 个候选。更新完继任者候选列表后，节点A 也会通知自己的前任，那么 A 的前任也就能更新自己的继任者候选列表。</p>
+<h3 id="优势及适用性"><a href="#优势及适用性" class="headerlink" title="优势及适用性"></a>优势及适用性</h3><ol>
+<li><strong>对数级别的路由复杂度</strong>：<ul>
+<li>Chord的路由机制具有对数级别的复杂度，这意味着在大规模网络中，节点数量的增加不会显著增加路由时间，保持了高效的数据定位能力。</li>
+</ul>
+</li>
+<li><strong>适用于大规模网络</strong>：<ul>
+<li>在高度分散和大规模的网络中，Chord协议能够有效地定位和检索数据，因为它的路由复杂度随节点数量增长而以对数级别增长。</li>
+</ul>
+</li>
+<li><strong>点对点文件共享</strong>：<ul>
+<li>Chord协议可用于构建点对点文件共享系统。当用户希望共享文件时，Chord协议能够快速将文件存储在网络中最适合的节点上，并提供高效的查找和检索功能，使得文件在网络中迅速传播。</li>
+</ul>
+</li>
+<li><strong>分布式存储</strong>：<ul>
+<li>在分布式存储系统中，Chord协议可以帮助将数据分散存储在多个节点上，并通过高效的路由机制实现数据的快速检索。它能够确保数据的冗余存储和高可用性，即使某些节点失效也能保持数据的访问性。</li>
+</ul>
+</li>
+<li><strong>容错性与扩展性</strong>：<ul>
+<li>Chord具有较好的容错性和可扩展性，能够适应节点动态变化和网络拓扑结构的改变。它可以很好地应对节点加入和退出的情况，保证了系统的稳定性和可靠性。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Kademlia协议"><a href="#Kademlia协议" class="headerlink" title="Kademlia协议"></a>Kademlia协议</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>​	Kademlia是另一种DHT协议，着重于实现高效的分布式查找和存储。它也使用类似Chord的哈希空间映射，但引入了一些不同的概念和机制。</p>
+<ul>
+<li><strong>节点和键的映射</strong>：Kademlia将每个节点和每个键映射到一个二进制树状结构上。节点ID和键通过异或操作来确定在树中的位置，这种结构使得路由和查找更为高效。</li>
+<li><strong>路由表</strong>：每个节点维护一个路由表，其中包含了对网络中其他节点的信息。这个表根据节点ID的距离来组织，更接近的节点拥有更高的优先级。</li>
+<li><strong>查找操作</strong>：Kademlia使用迭代式查找，节点只需要与部分节点通信，以找到最近的节点来存储或检索数据。通过沿着距离逐渐增大的节点进行迭代，最终找到最接近目标键的节点。</li>
+</ul>
+<p>Kademlia协议具有良好的容错性和可扩展性，允许在大规模网络中高效地存储和检索数据。当前实际应用的 DHT大部分都采用 Kad 及其变种。</p>
+<h3 id="设计原理与机制"><a href="#设计原理与机制" class="headerlink" title="设计原理与机制"></a>设计原理与机制</h3><h4 id="节点和键的映射到二进制树上："><a href="#节点和键的映射到二进制树上：" class="headerlink" title="节点和键的映射到二进制树上："></a>节点和键的映射到二进制树上：</h4><ol>
+<li><strong>二进制前缀树</strong>：<ul>
+<li>Kademlia使用一种称为二进制前缀树（或二叉树）的结构来组织节点和键。</li>
+<li>每个节点都有一个唯一的Kademlia标识符，通常使用大数字或散列来表示。</li>
+<li>这些标识符（node ID）被视为二进制数，形成一棵二叉树，树的节点按照二进制位进行排列。</li>
+</ul>
+</li>
+<li><strong>节点在树上的位置</strong>：<ul>
+<li>每个节点在二叉树上的位置由其节点ID决定。</li>
+<li>节点ID的二进制表示决定了节点在树中的层级和位置，节点的ID越接近，其在树中的位置越相近。</li>
+</ul>
+</li>
+</ol>
+<h4 id="路由表机制和距离信息的维护方式："><a href="#路由表机制和距离信息的维护方式：" class="headerlink" title="路由表机制和距离信息的维护方式："></a>路由表机制和距离信息的维护方式：</h4><ol>
+<li><strong>K桶（K-Buckets）</strong>：<ul>
+<li>Kademlia协议中的每个节点维护着一个路由表，通常由多个K桶组成。</li>
+<li>每个K桶负责存储与本节点ID在某个特定范围内的其他节点信息，这个范围是根据节点ID的距离指标来划分的。</li>
+</ul>
+</li>
+<li><strong>节点间的距离</strong>：<ul>
+<li>节点间的距离通常使用异或运算计算。</li>
+<li>节点A和节点B的距离可以通过对它们的ID进行异或操作得到一个标识它们距离的值。</li>
+<li>这种距离度量方法有助于节点有效地定位彼此，并在K桶中存储距离相对较近的节点信息。</li>
+</ul>
+</li>
+<li><strong>K桶的维护</strong>：<ul>
+<li>Kademlia通过定期维护K桶，保持其包含距离本节点较近的其他节点信息。</li>
+<li>当节点收到来自其他节点的消息时，它会更新自己的K桶，将新节点信息插入合适的K桶中，同时保持K桶的容量不超过预设值。</li>
+</ul>
+</li>
+</ol>
+<p>​	Kademlia协议利用这样的树状结构和路由表机制，通过节点ID的二进制位进行分层和分组，有效地维护节点间的距离信息，并提供高效的路由查找功能，使节点能够快速找到目标节点或数据。</p>
+<h3 id="路由策略"><a href="#路由策略" class="headerlink" title="路由策略"></a>路由策略</h3><p>​	Kademlia协议利用节点ID之间的异或操作实现高效的路由和查找，其路由策略基于异或操作的特性来实现有效的节点定位和数据检索。</p>
+<h4 id="节点ID的异或操作："><a href="#节点ID的异或操作：" class="headerlink" title="节点ID的异或操作："></a>节点ID的异或操作：</h4><ol>
+<li><strong>异或操作</strong>：<ul>
+<li>Kademlia中，节点使用唯一的Kademlia标识符作为其ID。</li>
+<li>两个节点ID的异或操作会产生一个新的ID，该ID的位表示了两个节点ID之间的距离。</li>
+</ul>
+</li>
+<li><strong>路由表按距离分组</strong>：<ul>
+<li>节点根据距离信息维护K桶，每个K桶存储与本节点距离在特定范围内的其他节点。</li>
+<li>异或操作产生的距离值决定了节点在K桶中的位置。</li>
+</ul>
+</li>
+</ol>
+<h4 id="路由策略及目标节点定位："><a href="#路由策略及目标节点定位：" class="headerlink" title="路由策略及目标节点定位："></a>路由策略及目标节点定位：</h4><ol>
+<li><strong>前缀匹配</strong>：<ul>
+<li>在路由查找中，节点通过异或操作得到目标节点ID与自身ID的距离。</li>
+<li>节点会根据距离将路由查找信息发送给离目标节点更接近的节点，这些节点存储在K桶中距离最接近目标节点的节点信息。</li>
+</ul>
+</li>
+<li><strong>迭代式查找</strong>：<ul>
+<li>Kademlia采用迭代式查找方式，每次查找迭代中会选择离目标更接近的节点发送请求，直到找到目标节点或达到预定条件为止。</li>
+<li>每一步都朝着节点ID空间中更接近目标ID的方向前进，使路由过程高效。</li>
+</ul>
+</li>
+</ol>
+<h4 id="有效定位目标节点或数据："><a href="#有效定位目标节点或数据：" class="headerlink" title="有效定位目标节点或数据："></a>有效定位目标节点或数据：</h4><ol>
+<li><strong>快速收敛</strong>：<ul>
+<li>由于异或操作的性质，Kademlia路由的迭代过程使得路由信息快速收敛于目标节点所在的区域。</li>
+<li>这意味着通过距离度量，路由信息会越来越接近目标节点的位置，减少了路由信息的传播范围，提高了路由的效率。</li>
+</ul>
+</li>
+<li><strong>快速检索</strong>：<ul>
+<li>Kademlia基于距离信息迭代式地向目标节点靠近，使得节点能够快速找到目标节点存储的数据或者最近的节点信息。</li>
+</ul>
+</li>
+</ol>
+<p>​	Kademlia的路由策略利用节点ID之间的异或操作，利用距离信息迭代式地向目标节点靠近，这种基于异或操作的路由策略有效地定位目标节点或数据，提供了高效的路由查找功能。</p>
+<h3 id="迭代式查找"><a href="#迭代式查找" class="headerlink" title="迭代式查找"></a>迭代式查找</h3><p>​	Kademlia协议中的迭代式查找是一种逐步缩小查找范围的过程，使节点能够快速找到目标键或节点，而不必与所有节点通信。</p>
+<ol>
+<li><strong>基于距离迭代查询：</strong><ul>
+<li>节点根据目标键或节点的ID，通过异或操作计算出距离最近的节点。</li>
+<li>节点首先与最接近的一组节点通信，请求它们是否拥有目标键或接近目标的信息。</li>
+</ul>
+</li>
+<li><strong>迭代优化：</strong><ul>
+<li>节点根据收到的响应，选择距离更近的节点组作为下一轮查询的目标，这样逐步缩小了查找范围。</li>
+<li>迭代过程持续进行，每次都向离目标更近的节点方向前进，直到找到目标或达到预定条件。</li>
+</ul>
+</li>
+</ol>
+<h3 id="优势及适用性-1"><a href="#优势及适用性-1" class="headerlink" title="优势及适用性"></a>优势及适用性</h3><ol>
+<li><strong>良好的容错性和可扩展性</strong>：<ul>
+<li>Kademlia的路由表和距离度量机制使其对节点的动态变化具有较好的适应性。</li>
+<li>当节点离线或新节点加入时，Kademlia能够动态调整路由表和节点距离，保持稳定的路由信息。</li>
+</ul>
+</li>
+<li><strong>大规模网络的适用性</strong>：<ul>
+<li>Kademlia协议在大规模网络中表现出色，其对数级别的路由复杂度使其能够高效地处理数以千计甚至更多节点的网络。</li>
+<li>对于像P2P文件共享、区块链等需要大规模网络支持的应用，Kademlia能够提供高效的节点查找和数据定位功能。</li>
+</ul>
+</li>
+<li><strong>实际应用情景</strong>：<ul>
+<li><strong>分布式存储</strong>：Kademlia作为DHT的一种实现，被广泛用于分布式存储系统，如BitTorrent的DHT网络。</li>
+<li><strong>点对点通信</strong>：用于搭建点对点通信系统，例如实现聊天应用或去中心化社交平台。</li>
+<li><strong>区块链</strong>：一些区块链项目中采用Kademlia协议作为P2P网络底层结构，用于节点发现和交易传播等场景。</li>
+</ul>
+</li>
+</ol>
+<p>​	Kademlia的优势在于其路由策略和节点间距离度量机制，使其适用于大规模网络中的高效数据定位和节点查找，以及其良好的容错性和可扩展性使其在分布式系统和P2P网络中有广泛的应用。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">xian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/11/15/ns4-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/">http://example.com/2023/11/15/ns4-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/11/15/%E5%8C%97%E9%82%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xian</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF%E3%80%8B%E5%B9%B3%E6%97%B6%E4%BD%9C%E4%B8%9A-4"><span class="toc-number">1.</span> <span class="toc-text">《网络存储技术》平时作业#4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DHT-%E5%88%86%E5%B8%83%E5%BC%8F%E5%88%97%E8%A1%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">DHT&#x2F;分布式列表概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%94%E5%8F%91%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.2.</span> <span class="toc-text">研发目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">主要特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.4.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DHT%E9%9A%BE%E7%82%B9"><span class="toc-number">1.1.5.</span> <span class="toc-text">DHT难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%8E%B7%E5%8F%96"><span class="toc-number">1.1.7.</span> <span class="toc-text">数据的保存和获取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.7.1.</span> <span class="toc-text">保存数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.7.2.</span> <span class="toc-text">获取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chord%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text">Chord协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text">关键特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E6%9C%BA%E5%88%B6%EF%BC%9A"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">路由机制：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">数据存储策略：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A3%80%E7%B4%A2%E5%92%8C%E5%AD%98%E5%82%A8%EF%BC%9A"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">快速的数据检索和存储：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.3.</span> <span class="toc-text">节点操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E5%8A%A0%E5%85%A5"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">节点的加入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E6%AD%A3%E5%B8%B8%E9%80%80%E5%87%BA"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">节点的正常退出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">节点的异常退出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E5%8F%8A%E9%80%82%E7%94%A8%E6%80%A7"><span class="toc-number">1.2.4.</span> <span class="toc-text">优势及适用性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kademlia%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">Kademlia协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86%E4%B8%8E%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">设计原理与机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%92%8C%E9%94%AE%E7%9A%84%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%A0%91%E4%B8%8A%EF%BC%9A"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">节点和键的映射到二进制树上：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8%E6%9C%BA%E5%88%B6%E5%92%8C%E8%B7%9D%E7%A6%BB%E4%BF%A1%E6%81%AF%E7%9A%84%E7%BB%B4%E6%8A%A4%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">路由表机制和距离信息的维护方式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">路由策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9ID%E7%9A%84%E5%BC%82%E6%88%96%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">节点ID的异或操作：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5%E5%8F%8A%E7%9B%AE%E6%A0%87%E8%8A%82%E7%82%B9%E5%AE%9A%E4%BD%8D%EF%BC%9A"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">路由策略及目标节点定位：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E8%8A%82%E7%82%B9%E6%88%96%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">有效定位目标节点或数据：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%BC%8F%E6%9F%A5%E6%89%BE"><span class="toc-number">1.3.4.</span> <span class="toc-text">迭代式查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E5%8F%8A%E9%80%82%E7%94%A8%E6%80%A7-1"><span class="toc-number">1.3.5.</span> <span class="toc-text">优势及适用性</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/13/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-13T03:24:25.721Z" title="Created 2023-12-13 11:24:25">2023-12-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/06/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" title="Untitled">Untitled</a><time datetime="2023-12-06T13:31:20.393Z" title="Created 2023-12-06 21:31:20">2023-12-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/04/%E5%A4%A7%E5%88%9B%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%9C%9F/" title="Untitled">Untitled</a><time datetime="2023-12-04T13:56:35.188Z" title="Created 2023-12-04 21:56:35">2023-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/04/%E8%AE%A1%E7%BD%91exp5/" title="Untitled">Untitled</a><time datetime="2023-12-04T01:16:55.470Z" title="Created 2023-12-04 09:16:55">2023-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/27/ns5-2021211311-2021211335-%E5%BC%A0%E5%BF%83%E5%A6%8D/" title="Untitled">Untitled</a><time datetime="2023-11-27T03:58:21.225Z" title="Created 2023-11-27 11:58:21">2023-11-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By xian</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
